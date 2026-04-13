@@ -26,7 +26,7 @@ class UserManagementController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'role' => $user->role,
-                    'email_verified_at' => optional($user->email_verified_at)?->toISOString(),
+                    'email_verified_at' => $user->email_verified_at?->toISOString(),
                     'created_at' => $user->created_at->toISOString(),
                 ]),
         ]);
