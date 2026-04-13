@@ -17,13 +17,18 @@ export default function Register() {
                 {...store.form()}
                 resetOnSuccess={['password', 'password_confirmation']}
                 disableWhileProcessing
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
             >
                 {({ processing, errors }) => (
                     <>
+                        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-900">
+                            New accounts are created as verified <span className="font-semibold">user</span> accounts,
+                            so they can access the dashboard right away.
+                        </div>
+
                         <div className="grid gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="name">Name</Label>
+                                <Label htmlFor="name" className="text-slate-800">Name</Label>
                                 <Input
                                     id="name"
                                     type="text"
@@ -33,6 +38,7 @@ export default function Register() {
                                     autoComplete="name"
                                     name="name"
                                     placeholder="Full name"
+                                    className="border-slate-300 bg-white text-slate-950"
                                 />
                                 <InputError
                                     message={errors.name}
@@ -41,7 +47,7 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email" className="text-slate-800">Email address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -50,12 +56,13 @@ export default function Register() {
                                     autoComplete="email"
                                     name="email"
                                     placeholder="email@example.com"
+                                    className="border-slate-300 bg-white text-slate-950"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password">Password</Label>
+                                <Label htmlFor="password" className="text-slate-800">Password</Label>
                                 <PasswordInput
                                     id="password"
                                     required
@@ -63,12 +70,13 @@ export default function Register() {
                                     autoComplete="new-password"
                                     name="password"
                                     placeholder="Password"
+                                    className="border-slate-300 bg-white text-slate-950"
                                 />
                                 <InputError message={errors.password} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password_confirmation">
+                                <Label htmlFor="password_confirmation" className="text-slate-800">
                                     Confirm password
                                 </Label>
                                 <PasswordInput
@@ -78,6 +86,7 @@ export default function Register() {
                                     autoComplete="new-password"
                                     name="password_confirmation"
                                     placeholder="Confirm password"
+                                    className="border-slate-300 bg-white text-slate-950"
                                 />
                                 <InputError
                                     message={errors.password_confirmation}
@@ -86,7 +95,7 @@ export default function Register() {
 
                             <Button
                                 type="submit"
-                                className="mt-2 w-full"
+                                className="mt-2 w-full bg-slate-950 text-white hover:bg-slate-800"
                                 tabIndex={5}
                                 data-test="register-user-button"
                             >
@@ -95,9 +104,13 @@ export default function Register() {
                             </Button>
                         </div>
 
-                        <div className="text-center text-sm text-muted-foreground">
+                        <div className="text-center text-sm text-slate-600">
                             Already have an account?{' '}
-                            <TextLink href={login()} tabIndex={6}>
+                            <TextLink
+                                href={login()}
+                                tabIndex={6}
+                                className="font-semibold text-slate-950 decoration-slate-400 hover:text-slate-950 dark:text-slate-950"
+                            >
                                 Log in
                             </TextLink>
                         </div>
@@ -109,6 +122,6 @@ export default function Register() {
 }
 
 Register.layout = {
-    title: 'Create an account',
-    description: 'Enter your details below to create your account',
+    title: 'Create your account',
+    description: 'Register a verified user account and start using the dashboard immediately',
 };
